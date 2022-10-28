@@ -26,3 +26,5 @@ class ProdutoView(BaseCrudView):
     InstaceOfProdutoController: ProdutoController = ProdutoController(request)
 
     return await super().renderPageWithlistOfAllObjects(objectController=InstaceOfProdutoController)
+
+produtoView: ProdutoView = ProdutoView()
