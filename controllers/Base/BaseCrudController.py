@@ -10,27 +10,27 @@ class BaseCrudController:
 
   # Método genérico que recebe o id do objeto e o retorna com as
   # informações correspondentes
-  async def getOneModelObject(self, objID: int) -> Optional[object]:
+  async def getOnlyOneOfObjects(self, objectID: int) -> Optional[object]:
     async with get_session() as session:
-      obj: self.model = await session.get(self.model, objID)
+      Object: self.model = await session.get(self.model, objectID)
 
-      return obj
+      return Object
 
   # Método que retorna uma lista de objetos com as informações que correspondem 
   # ao seu model 
-  async def getAllModelObjects(self) -> Optional[List[object]]:
+  async def getListOfAllObjects(self) -> Optional[List[object]]:
     async with get_session as session:
       query = select(self.model)
-      result = await session.execute(query)
+      listOfAllObjects = await session.execute(query)
 
-      return result.scalars().unique().all()
+      return listOfAllObjects.scalars().unique().all()
 
   # Método que recebe o id do objeto e o deleta
-  async def delModelObject(self, objID: int) -> None:
+  async def delModelObject(self, objectID: int) -> None:
     async with get_session() as session:
-      obj: self.model = await session.get(self.model, objID)
+      Object: self.model = await session.get(self.model, objectID)
 
-      if obj:
-        session.delete(obj)
+      if Object:
+        session.delete(Object)
         await session.commit()
       

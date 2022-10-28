@@ -8,7 +8,6 @@ class ProdutoController(BaseCrudController):
   def __init__(self, request: Request) -> None:
       super().__init__(Produto, request)
 
-
   # Método que cria um novo objeto produto e salva no banco de dados
   async def createProduto(self) -> None:
     formWithRequestInformation = await self.request.form()
