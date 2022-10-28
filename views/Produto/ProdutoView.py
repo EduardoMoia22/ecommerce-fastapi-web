@@ -10,8 +10,8 @@ class ProdutoView(BaseCrudView):
   def __init__(self) -> None:
       self.router = APIRouter()
 
-      self.router.routes.append(Route(path='produto/listagem', endpoint=self.renderPageWithlistOfAllObjects, methods=["GET"], name='ListOfAllObjects'))
-      self.router.routes.append(Route(path='produto/detalhes/{produtoID:int}', endpoint=self.renderPageWithOnlyOneOfObjects, methods=["GET"], name='OnlyOneOfObjects'))
+      self.router.routes.append(Route(path='/produto/listagem', endpoint=self.renderPageWithlistOfAllObjects, methods=["GET"], name='ListOfAllObjects'))
+      self.router.routes.append(Route(path='/produto/detalhes/{produtoID:int}', endpoint=self.renderPageWithOnlyOneOfObjects, methods=["GET"], name='OnlyOneOfObjects'))
       
       super().__init__('produto')
  
